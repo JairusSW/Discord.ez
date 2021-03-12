@@ -1,0 +1,17 @@
+{
+  "dependencies": {
+    "dayjs": "^1.10.4",
+    "discord-image-generation": "^1.4.7",
+    "discord.js": "^12.5.1",
+    "keyv": "^4.0.3",
+    "lyrics-finder": "^21.7.0",
+    "moment": "^2.29.1",
+    "moment-timezone": "^0.5.33",
+    "needle": "^2.6.0",
+    "prettier": "^2.2.1",
+    "safe-eval": "^0.4.1",
+    "ytdl-core": "^4.5.0",
+    "ytpl": "^2.0.5",
+    "ytsr": "^3.3.1"
+  }
+}
