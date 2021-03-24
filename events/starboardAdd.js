@@ -10,8 +10,6 @@ module.exports = {
 
     if (message.author.id === user.id) return;
 
-    if (message.author.bot) return;
-
     const { starboardChannel } = client.settings.get(message.guild.id);
 
     const starChannel = message.guild.channels.cache.find(
