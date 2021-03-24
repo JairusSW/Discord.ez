@@ -25,7 +25,7 @@ module.exports = {
       "Your a genuis 🧐.",
     ];
 
-    const selection = selections[(Math.random() * balls.length) | 0];
+    const selection = selections[(Math.random() * selections.length) | 0];
 
     let user = getUserFromMention(args[0], message);
 
