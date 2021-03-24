@@ -5,6 +5,7 @@ const { MessageEmbed } = require("discord.js");
 module.exports = {
   name: "minesweeper",
   description: "Get Minesweeper Game",
+  usage: "[easy/medium/hard]",
   guildOnly: true,
   cooldown: 5,
   async execute(message, args) {

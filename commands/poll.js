@@ -3,7 +3,7 @@ const { MessageEmbed } = require("discord.js");
 module.exports = {
   name: "poll",
   description: "Set Up A Poll",
-  usage: "[user]",
+  usage: "",
   guildOnly: true,
   cooldown: 1,
   async execute(message, args) {
@@ -11,7 +11,7 @@ module.exports = {
       let title;
 
       const embed = new MessageEmbed()
-        .setTitle("Please Enter A Title.")
+        .setTitle("Please Enter A Title For The Poll.")
         .setColor("#ff5050")
         .setTimestamp()
         .setFooter(message.author.username);

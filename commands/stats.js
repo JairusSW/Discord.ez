@@ -5,6 +5,7 @@ const format = require("numeral");
 module.exports = {
   name: "stats",
   description: "Retrieve the bot stats",
+  usage: "",
   guildOnly: true,
   cooldown: 1,
   async execute(message, args) {

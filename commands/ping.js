@@ -3,6 +3,7 @@ const { MessageEmbed } = require("discord.js");
 module.exports = {
   name: "ping",
   description: "Get the ping in milliseconds",
+  usage: "",
   guildOnly: true,
   cooldown: 1,
   async execute(message, args, config) {

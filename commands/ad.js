@@ -5,6 +5,7 @@ const { MessageEmbed, MessageAttachment } = require("discord.js");
 module.exports = {
   name: "ad",
   description: "Create Ad Image",
+  usage: "[user]",
   cooldown: 1,
   guildOnly: true,
   async execute(message, args) {

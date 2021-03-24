@@ -5,12 +5,12 @@ const { MessageEmbed, MessageAttachment } = require("discord.js");
 module.exports = {
   name: "facepalm",
   description: "Create Facepalm Image",
+  usage: "[user]",
   cooldown: 1,
   guildOnly: true,
   async execute(message, args) {
     try {
-      const user =
-        (await getUserFromMention(args[0], message)) || message.author;
+      const user = getUserFromMention(args[0], message) || message.author;
 
       const image = await new DIG.Facepalm().getImage(
         user.displayAvatarURL({ dynamic: false, format: "png" })

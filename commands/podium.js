@@ -6,6 +6,7 @@ module.exports = {
   name: "podium",
   description: "Create Podium Image",
   cooldown: 1,
+  usage: "[user1/user2]",
   guildOnly: true,
   async execute(message, args) {
     try {

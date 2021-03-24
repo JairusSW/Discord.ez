@@ -5,6 +5,7 @@ const { MessageEmbed, MessageAttachment } = require("discord.js");
 module.exports = {
   name: "slap",
   description: "Create Slap Image",
+  usage: "[user]",
   cooldown: 1,
   guildOnly: true,
   async execute(message, args) {

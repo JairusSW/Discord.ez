@@ -5,6 +5,7 @@ const { MessageEmbed } = require("discord.js");
 module.exports = {
   name: "momma",
   description: "Get Random Momma Joke",
+  usage: "",
   guildOnly: true,
   cooldown: 1,
   async execute(message, args) {

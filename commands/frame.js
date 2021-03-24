@@ -5,6 +5,7 @@ const { MessageEmbed, MessageAttachment } = require("discord.js");
 module.exports = {
   name: "frame",
   description: "Create ~Beautiful~ Image",
+  usage: "[user]",
   cooldown: 1,
   guildOnly: true,
   async execute(message, args) {

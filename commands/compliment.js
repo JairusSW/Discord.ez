@@ -5,11 +5,11 @@ const { MessageEmbed } = require("discord.js");
 module.exports = {
   name: "compliment",
   description: "Be noice to someone! :P",
-  usage: "[question]",
+  usage: "[user]",
   guildOnly: true,
   cooldown: 1,
   async execute(message, args) {
-    const balls = [
+    const selections = [
       "Your so nice.",
       "You the best 😀.",
       "Your a good friend.",
@@ -25,13 +25,13 @@ module.exports = {
       "Your a genuis 🧐.",
     ];
 
-    const ball = balls[(Math.random() * balls.length) | 0];
+    const selection = selections[(Math.random() * balls.length) | 0];
 
     let user = getUserFromMention(args[0], message);
 
     if (user == null) user = message.author;
     const embed = new MessageEmbed()
-      .setTitle(`${user.username}, ${ball}`)
+      .setTitle(`${user.username}, ${selection}`)
       .setColor("#000FF")
       .setTimestamp()
       .setFooter(message.author.username);

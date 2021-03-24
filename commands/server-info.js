@@ -3,6 +3,7 @@ const { MessageEmbed } = require("discord.js");
 module.exports = {
   name: "server-info",
   description: "Get Conplete Server Information",
+  usage: "",
   guildOnly: true,
   cooldown: 1,
   async execute(message, args) {

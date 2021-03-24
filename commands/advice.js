@@ -12,7 +12,7 @@ module.exports = {
     needle.get("https://api.adviceslip.com/advice", (err, res, body) => {
       if (!err && res.statusCode === 200) {
         const user =
-          getUserFromMention(args, message.client)[0] || message.author;
+          getUserFromMention(args[0], message) || message.author;
 
         const advice = JSON.parse(body);
 
@@ -52,22 +52,16 @@ module.exports = {
   },
 };
 
-function getUserFromMention(args, client) {
+function getUserFromMention(mention, message) {
   if (!mention) return;
 
-  const mentions = [];
+  if (mention.startsWith("<@") && mention.endsWith(">")) {
+    mention = mention.slice(2, -1);
 
-  for (const arg of args) {
-    if (arg.startsWith("<@") && arg.endsWith(">")) {
-      mention = arg.slice(2, -1);
-
-      if (mention.startsWith("!")) {
-        mention = arg.slice(1);
-      }
-
-      mentions.push(client.users.cache.get(mention));
+    if (mention.startsWith("!")) {
+      mention = mention.slice(1);
     }
-  }
 
-  return mentions;
+    return message.client.users.cache.get(mention);
+  }
 }

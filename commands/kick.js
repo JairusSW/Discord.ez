@@ -16,11 +16,10 @@ module.exports = {
         .setTimestamp()
         .setFooter(message.author.username);
 
-      const kickMessage = message.channel.send(embed);
-
-      await Promise.all([kickMessage.react("✅"), kickMessage.react("❌")]);
+      await message.channel.send(embed);
 
       try {
+
         const filter = (m) => message.author.id === m.author.id;
 
         const response = await message.channel.awaitMessages(filter, {
@@ -29,7 +28,38 @@ module.exports = {
           errors: ["time"],
         });
 
-        title = response.first().content;
+        const yesses = ['y', 'yes']
+
+        const nos = ['n', 'no']
+
+        const res = response.first().content.toLowerCase().trim();
+
+        if (yesses.includes(res)) {
+
+          member.kick()
+
+        } else if (nos.includes(res)) {
+
+          const NoKick = new MessageEmbed()
+          .setTitle(`Did not kick user`)
+          .setColor("#ff5050")
+          .setTimestamp()
+          .setFooter(message.author.username);
+
+          message.channel.send(NoKick);
+
+        } else {
+
+          const Nothing = new MessageEmbed()
+          .setTitle(`Invalid Response. Cancelling.`)
+          .setColor("#ff5050")
+          .setTimestamp()
+          .setFooter(message.author.username);
+
+          message.channel.send(Nothing);
+
+        }
+
       } catch {
         const NoResponse = new MessageEmbed()
           .setTitle("Invalid Response. Cancelling.")
@@ -42,15 +72,6 @@ module.exports = {
         return;
       }
 
-      const pollEmbed = new MessageEmbed()
-        .setTitle(title)
-        .setColor("#ff5050")
-        .setTimestamp()
-        .setFooter(message.author.username);
-
-      const poll = await message.channel.send(pollEmbed);
-
-      await Promise.all([poll.react("✅"), poll.react("❌")]);
     } catch (err) {
       const Unavaliable = new MessageEmbed()
         .setTitle("Something Happened.")

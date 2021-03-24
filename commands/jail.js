@@ -9,8 +9,7 @@ module.exports = {
   guildOnly: true,
   async execute(message, args) {
     try {
-      const user =
-        (await getUserFromMention(args[0], message)) || message.author;
+      const user = getUserFromMention(args[0], message) || message.author;
 
       const image = await new DIG.Jail().getImage(
         user.displayAvatarURL({ dynamic: false, format: "png" })

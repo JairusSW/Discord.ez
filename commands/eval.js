@@ -5,7 +5,7 @@ const eval = require("safe-eval");
 module.exports = {
   name: "eval",
   description: "Evaluate JavaScript Code",
-  usage: "[javascript]",
+  usage: "[code]",
   cooldown: 1,
   guildOnly: true,
   async execute(message, args) {

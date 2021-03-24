@@ -4,12 +4,13 @@ const { MessageEmbed, MessageAttachment } = require("discord.js");
 
 module.exports = {
   name: "bed",
-  description: "Create Monster Under Bed Image",
+  description: "Create Monster Under Bed Comic",
+  usage: "[user]",
   cooldown: 1,
   guildOnly: true,
   async execute(message, args) {
     try {
-      const user2 = getUserFromMention(args[0], message);
+      const user2 = getUserFromMention(args[0], message) || message.author;
 
       if (user2 == null) {
         const mention = new MessageEmbed()

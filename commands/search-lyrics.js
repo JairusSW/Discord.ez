@@ -5,6 +5,7 @@ const lyricsFinder = require("lyrics-finder");
 module.exports = {
   name: "search-lyrics",
   description: "Search For Lyrics.",
+  usage: "[song]",
   aliases: [],
   guildOnly: true,
   cooldown: 5,

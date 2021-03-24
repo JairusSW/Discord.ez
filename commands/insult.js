@@ -11,8 +11,7 @@ module.exports = {
   async execute(message, args) {
     needle.get("https://quandyfactory.com/insult/json/", (err, res, body) => {
       if (!err && res.statusCode === 200) {
-        const user =
-          getUserFromMention(args, message.client)[0] || message.author;
+        const user = getUserFromMention(args[0], message) || message.author;
 
         if (user == null) {
           const embed = new MessageEmbed()
@@ -50,22 +49,17 @@ module.exports = {
   },
 };
 
-function getUserFromMention(args, client) {
+function getUserFromMention(mention, message) {
   if (!mention) return;
 
-  const mentions = [];
+  if (mention.startsWith("<@") && mention.endsWith(">")) {
+    mention = mention.slice(2, -1);
 
-  for (const arg of args) {
-    if (arg.startsWith("<@") && arg.endsWith(">")) {
-      mention = arg.slice(2, -1);
-
-      if (mention.startsWith("!")) {
-        mention = arg.slice(1);
-      }
-
-      mentions.push(client.users.cache.get(mention));
+    if (mention.startsWith("!")) {
+      mention = mention.slice(1);
     }
-  }
 
-  return mentions;
+    return message.client.users.cache.get(mention);
+  }
 }
+
