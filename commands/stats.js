@@ -1,6 +1,6 @@
 const { MessageEmbed } = require("discord.js");
 
-const format = require("../util/formatViews");
+const format = require("numeral");
 
 module.exports = {
   name: "stats",
@@ -32,9 +32,9 @@ module.exports = {
     const embed = new MessageEmbed()
       .setTitle(`Stats`)
       .addField("Name: ", message.client.user.username)
-      .addField("Servers:", format(serverList))
-      .addField("Users:", format(userList))
-      .addField("Channels:", format(channelList))
+      .addField("Servers:", format(parseInt(serverList)).format('0,0'))
+      .addField("Users:", format(parseInt(userList)).format('0,0'))
+      .addField("Channels:", format(parseInt(channelList)).format('0,0'))
       .addField("Owner: ", "JairusSW#3022")
       .setThumbnail(message.client.user.displayAvatarURL())
       .setColor("#ff5050")

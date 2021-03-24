@@ -1,22 +1,24 @@
 const { MessageEmbed } = require("discord.js");
 
 module.exports = {
-  name: "poll",
-  description: "Set Up A Poll",
+  name: "kick",
+  description: "Kick A User",
   usage: "[user]",
   guildOnly: true,
   cooldown: 1,
   async execute(message, args) {
     try {
-      let title;
+      const member = message.mentions.members.first();
 
       const embed = new MessageEmbed()
-        .setTitle("Please Enter A Title.")
+        .setTitle(`Preparing to kick ${member.username}. Yes/no.`)
         .setColor("#ff5050")
         .setTimestamp()
         .setFooter(message.author.username);
 
-      message.channel.send(embed);
+      const kickMessage = message.channel.send(embed);
+
+      await Promise.all([kickMessage.react("✅"), kickMessage.react("❌")]);
 
       try {
         const filter = (m) => message.author.id === m.author.id;

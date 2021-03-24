@@ -1,11 +1,33 @@
-(async () => {
+const os = require("os");
 
-    const DIG = require('discord-image-generation')
+const platforms = {
+  win32: `Windows ${process.arch}`,
+  darwin: `MacOS ${process.arch}`,
+  debian: `Linux ${process.arch}`,
+};
 
-    const fs = require('fs')
+const platform = platforms[process.platform];
 
-    const image = await new DIG.Spank().getImage('./user1.jpg', './user2.jpg')
+const model = os.cpus()[0]["model"];
 
-    fs.writeFileSync('./test.png', image)
+const cores = os.cpus().length;
 
-})()
+let usedMem = (os.totalmem() - os.freemem()).toString().split("");
+usedMem.reverse();
+usedMem.splice(0, 9);
+usedMem.reverse();
+usedMem = usedMem.join("");
+
+let memory = os.totalmem().toString().split("");
+memory.reverse();
+memory.splice(0, 9);
+memory.reverse();
+memory = `${usedMem}/${memory.join("")} GB`;
+
+console.log("Platform:", platform);
+
+console.log("Model:", model);
+
+console.log("Cores:", cores);
+
+console.log("Memory:", memory);

@@ -1,9 +1,12 @@
-require('dotenv').config()
+require("dotenv").config();
 
-const { ShardingManager } = require('discord.js')
+const { ShardingManager } = require("discord.js");
 
-const manager = new ShardingManager('./main.js', { token: process.env.token, totalShards: 'auto' })
+const manager = new ShardingManager("./main.js", {
+  token: process.env.token,
+  totalShards: "auto",
+});
 
-manager.on('shardCreate', shard => console.log(`Launched shard ${shard.id}`))
+manager.on("shardCreate", (shard) => console.log(`Launched shard ${shard.id}`));
 
-manager.spawn()
+manager.spawn();

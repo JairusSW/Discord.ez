@@ -1,4 +1,4 @@
-const ms = require("ms");
+/*const ms = require("ms");
 
 const { MessageEmbed, MessageAttachment } = require("discord.js");
 
@@ -80,3 +80,4 @@ function getUserFromMention(mention, message) {
     return message.client.users.cache.get(mention);
   }
 }
+*/
