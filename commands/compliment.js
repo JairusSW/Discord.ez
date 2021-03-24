@@ -32,7 +32,7 @@ module.exports = {
     if (user == null) user = message.author;
     const embed = new MessageEmbed()
       .setTitle(`${user.username}, ${selection}`)
-      .setColor("#000FF")
+      .setColor("#ff5050")
       .setTimestamp()
       .setFooter(message.author.username);
 
